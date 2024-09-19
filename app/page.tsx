@@ -42,14 +42,25 @@ export default function Home() {
         <Container id="featured" st={{ marginTop: '20px' }}>
             <div className="flex gap-2 items-center mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" className="w-6 h-6"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/></svg>
-                <h1 className='text-2xl font-bold'>FEATURED</h1>
+                <h1 className='text-2xl font-bold'>OUR FEATURED PRODUCTS</h1>
             </div>
-            <Grid lg={3}>
-                <ProductCard details={{id: 1, name: 'Product 1', img: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp", description: ''}} />
-                <ProductCard details={{id: 2, name: 'Product 2', img: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp", description: ''}}/>
-                <ProductCard details={{id: 3, name: 'Product 3', img: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp", description: '', new: true}}/>
-                <ProductCard details={{id: 4, name: 'Product 4', img: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp", description: ''}}/>
-            </Grid>
+
+            <div>
+              <div className='sm:block hidden'>
+
+              </div>
+
+              <div className='md:block lg:block hidden'>
+
+              </div>
+            </div>
+
+            <div className='grid grid-cols-1 gap-2 gap-y-6 w-full lg:grid-cols-4'>
+              <ProductCard details={{id: 1, name: 'Product 1', img: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp", description: ''}} />
+              <ProductCard details={{id: 2, name: 'Product 2', img: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp", description: ''}}/>
+              <ProductCard details={{id: 3, name: 'Product 3', img: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp", description: '', new: true}}/>
+              <ProductCard details={{id: 4, name: 'Product 4', img: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp", description: ''}}/>
+            </div>
         </Container>
       </div>
     )

@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import React from 'react'
 
 type GridProps = {
@@ -7,11 +8,16 @@ type GridProps = {
 }
 
 const Grid = ({ children, md = 3, lg = 6 }: GridProps) => {
+
+    const cl = clsx(
+        'grid grid-cols-1 gap-2 gap-y-6 w-full',
+        `md:grid-cols-${md}`,
+        `lg:grid-cols-${lg}`
+    )
+
+    
     return (
-        <div className={`
-            grid grid-cols-1 
-            md:grid-cols-2 lg:grid-cols-4 gap-2 gap-y-6
-        `}>
+        <div className={cl}>
             {children}
         </div>
     )
