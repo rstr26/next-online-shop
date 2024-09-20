@@ -1,4 +1,4 @@
-import { ReactChild } from '@/app/shared/types'
+import { ReactChild } from '@/app/_shared/types'
 import React from 'react'
 
 const ProductsItemLayout = ({children}: ReactChild) => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactChild } from '../shared/types'
+import { ReactChild } from '../_shared/types'
 
 const CartLayout = ({children}: ReactChild) => {
     return (

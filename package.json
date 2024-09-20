@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/crypto-js": "^4.2.2",
     "clsx": "^2.1.1",
     "crypto-js": "^4.2.0",
     "daisyui": "^4.12.10",
