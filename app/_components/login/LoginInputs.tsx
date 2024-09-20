@@ -1,15 +1,30 @@
 'use client'
+import { Login } from '@/app/_backend/shared'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 
 const LoginInputs = () => {
 
+    const credentialsDefault = { uname: '', pword: '' }
     const [visible, toggleVisible] = useState(false)
-    const [credentials, setCredentials] = useState({ uname: '', pword: '' })
+    const [credentials, setCredentials] = useState(credentialsDefault)
+    const [loading, toggleLoading] = useState(false)
 
     function login(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault()
-        console.log(credentials);
+
+        toggleLoading(true)
+        Login(credentials)
+        .then(() => {
+            toast.success('Logged in successfully!')
+        })
+        .catch(err => toast.error(err))
+        .finally(() => {
+            toggleVisible(false)
+            setCredentials(credentialsDefault)
+            toggleLoading(false)
+        })
     }
 
     return (
@@ -28,7 +43,14 @@ const LoginInputs = () => {
                             <path
                             d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                         </svg>
-                        <input type="text" className="grow" placeholder="Your username..." />
+                        
+                        <input 
+                            type="text" 
+                            className="grow" 
+                            placeholder="Your username..." 
+                            value={credentials.uname}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCredentials({...credentials, uname: e.target.value})}
+                        />
                     </label>
                 </div>
 
@@ -48,7 +70,13 @@ const LoginInputs = () => {
                             clipRule="evenodd" />
                         </svg>
 
-                        <input type={visible ? "text" : "password"} className="grow" placeholder="Your password..." />
+                        <input 
+                            type={visible ? "text" : "password"} 
+                            className="grow" 
+                            placeholder="Your password..." 
+                            value={credentials.pword}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCredentials({...credentials, pword: e.target.value})}
+                        />
 
                         {visible ? <HideIcon cb={() => toggleVisible(false)}/> : <ShowIcon cb={() => toggleVisible(true)}/>}
                     </label>
@@ -56,8 +84,11 @@ const LoginInputs = () => {
                 </div>
 
                 <div className="form-control mt-6">
-                    <button className="btn btn-primary">Login</button>
-                    <button className="btn mt-2">Sign Up</button>
+                    <button className="btn btn-primary" disabled={loading}>
+                        {loading && <span className="loading loading-spinner"></span>}
+                        Login
+                    </button>
+                    <button className="btn mt-2" disabled={loading}>Sign Up</button>
                 </div>
             </form>
         </div>

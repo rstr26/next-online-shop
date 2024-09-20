@@ -1,6 +1,6 @@
 import React from 'react'
-import { ReactChild } from '../shared/types'
-import Navbar from '../@components/others/Navbar'
+import { ReactChild } from '../_shared/types'
+import Navbar from '../_components/others/Navbar'
 
 const LoginLayout = ({ children }: ReactChild) => {
     return (

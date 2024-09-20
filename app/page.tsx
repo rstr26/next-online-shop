@@ -1,7 +1,7 @@
-import Container from "./@components/others/Container";
-import Grid from "./@components/others/Grid";
-import Navbar from "./@components/others/Navbar";
-import ProductCard from "./@components/others/ProductCard/ProductCard";
+import Container from "./_components/others/Container";
+import Grid from "./_components/others/Grid";
+import Navbar from "./_components/others/Navbar";
+import ProductCard from "./_components/others/ProductCard/ProductCard";
 
 export default function Home() {
     return(
