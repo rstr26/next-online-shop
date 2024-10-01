@@ -1,9 +1,46 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 
 const Navbar = ({ brand }: { brand: string }) => {
+
+    const { scrollY } = useScroll()
+    const threshold = 20 // show navbar on scroll up sensitivity threshold
+    const [hidden, setHidden] = useState(false)
+    
+    // scroll event listener for navbar visibility
+    useMotionValueEvent(scrollY, 'change', (val) => {
+        const prev = scrollY.getPrevious()
+        
+        if (prev) {
+            const scrollDifference = prev - val;
+            
+            // show navbar if its almost at the top
+            if(val < 50) setHidden(false) 
+            
+            // show navbar on scrolling up
+            if (scrollDifference > threshold) {
+                setHidden(false) 
+            } 
+            // instantly hide navbar on scrolling down if its already 50 units below
+            else if ((val > 50) && (val > prev)) {
+                setHidden(true) 
+            }
+        }
+    })
+    
+
     return (
-        <div className="navbar bg-base-100">
+        <motion.nav
+            variants={{
+                visible: { y: 0 },
+                hidden: { y: '-100%' }
+            }}
+            transition={{ ease: 'easeInOut' }}
+            animate={hidden ? 'hidden' : 'visible'}
+            className="navbar fixed glass z-[100]"
+        >
             {/* Brand Name */}
             <div className="flex-1">
                 <a className="text-xl mr-7">{brand}</a>
@@ -71,7 +108,7 @@ const Navbar = ({ brand }: { brand: string }) => {
                 </ul>
                 </div>
             </div>
-        </div>
+        </motion.nav>
     )
 }
 

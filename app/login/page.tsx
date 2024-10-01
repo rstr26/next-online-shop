@@ -6,8 +6,7 @@ const LoginPage = () => {
 
     return (
         <div 
-            className="hero bg-base-200 min-h-screen" 
-            style={{ backgroundImage: "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)" }}
+            className="hero bg-gradient-to-r from-primary to-secondary min-h-screen" 
         >
             {/* Overlay */}
             <div className="hero-overlay bg-opacity-60"></div>
